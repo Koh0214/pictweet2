@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
 
   def index
-    @tweets = Tweet.order("id DESC") # Tweet.all.order("id DESC")のallを省略できる。
+    @tweets = Tweet.order("id DESC").page(params[:page]).per(5) # Tweet.all.order("id DESC")のallを省略できる。
   end
 
 
