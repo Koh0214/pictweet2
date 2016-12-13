@@ -17,6 +17,11 @@ class TweetsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 
+  def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy if current_user.id == tweet.user_id
+  end
+
   private 
   def tweet_params
     params.permit(:image, :text)
