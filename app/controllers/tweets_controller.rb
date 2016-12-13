@@ -31,6 +31,10 @@ class TweetsController < ApplicationController
     tweet.update(tweet_params) if current_user.id == tweet.user_id
   end
 
+  def show
+    @tweet = Tweet.find(params[:id])
+  end
+
 
   private 
   def tweet_params
