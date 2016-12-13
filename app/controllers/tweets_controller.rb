@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
     before_action :move_to_index, except: :index 
 
   def index
-    @tweets = Tweet.order("id DESC").page(params[:page]).per(5) # Tweet.all.order("id DESC")のallを省略できる。
+    @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("id DESC") # Tweet.all.order("id DESC")のallを省略できる。
   end
 
 
